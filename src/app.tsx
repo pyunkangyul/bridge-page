@@ -23,7 +23,7 @@ export default function App() {
         <div className="relative w-full flex justify-center mb-8">
           {/* GET 15% OFF Badge */}
           <div className="absolute right-2 md:right-6 top-0 z-10">
-            <div className="w-[78px] h-[78px] rounded-full bg-[#EF233C] flex items-center justify-center shadow-lg">
+            <div className="w-[78px] h-[78px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
               <div className="w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center">
                 <span className="text-[12px] font-bold leading-tight text-white">GET</span>
                 <svg viewBox="0 0 60 28" className="w-[56px] h-[26px]">
@@ -53,7 +53,7 @@ export default function App() {
 
           {/* 3M SOLD Badge */}
           <div className="absolute right-2 md:right-6 top-[88px] z-10">
-            <div className="w-[78px] h-[78px] rounded-full bg-[#2a4cb5] flex items-center justify-center shadow-lg">
+            <div className="w-[78px] h-[78px] rounded-full bg-[#3257FE] flex items-center justify-center shadow-lg">
               <div className="w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center">
                 <span className="text-[26px] font-extrabold leading-tight text-white italic" style={{ fontFamily: "'Poppins', sans-serif" }}>3M</span>
                 <span className="text-[12px] font-bold leading-tight text-white -mt-0.5">SOLD</span>
