@@ -75,7 +75,7 @@ export default function App() {
 
           {/* Product Image */}
           <img
-            src="/product.png"
+            src="/product.webp"
             alt="Pyunkang Yul Essence Toner"
             className="w-[240px] md:w-[280px] drop-shadow-2xl"
           />
