@@ -24,9 +24,15 @@ export default function App() {
           {/* GET 15% OFF Badge */}
           <div className="absolute right-2 md:right-6 top-0 z-10">
             <div className="w-[78px] h-[78px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
-              <div className="w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center">
-                <span className="text-[12px] font-bold leading-tight text-white">GET</span>
-                <svg viewBox="0 0 60 28" className="w-[56px] h-[26px]">
+              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
+                {/* Diagonal lines */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
+                  <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
+                  <div className="bg-white/8 w-[200%] h-[4px] rounded-full" />
+                  <div className="bg-white/8 w-[200%] h-[8px] rounded-full" />
+                </div>
+                <span className="relative z-[1] text-[12px] font-bold leading-tight text-white">GET</span>
+                <svg viewBox="0 0 60 28" className="relative z-[1] w-[56px] h-[26px]">
                   <defs>
                     <linearGradient id="gold-gradient" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#FFD700" />
@@ -46,7 +52,7 @@ export default function App() {
                     15%
                   </text>
                 </svg>
-                <span className="text-[12px] font-bold leading-tight text-white -mt-0.5">OFF</span>
+                <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">OFF</span>
               </div>
             </div>
           </div>
@@ -54,9 +60,15 @@ export default function App() {
           {/* 3M SOLD Badge */}
           <div className="absolute right-2 md:right-6 top-[88px] z-10">
             <div className="w-[78px] h-[78px] rounded-full bg-[#3257FE] flex items-center justify-center shadow-lg">
-              <div className="w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center">
-                <span className="text-[26px] font-extrabold leading-tight text-white italic" style={{ fontFamily: "'Poppins', sans-serif" }}>3M</span>
-                <span className="text-[12px] font-bold leading-tight text-white -mt-0.5">SOLD</span>
+              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
+                {/* Diagonal lines */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
+                  <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
+                  <div className="bg-white/8 w-[200%] h-[4px] rounded-full" />
+                  <div className="bg-white/8 w-[200%] h-[8px] rounded-full" />
+                </div>
+                <span className="relative z-[1] text-[26px] font-extrabold leading-tight text-white italic" style={{ fontFamily: "'Poppins', sans-serif" }}>3M</span>
+                <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">SOLD</span>
               </div>
             </div>
           </div>
