@@ -102,7 +102,7 @@ export default function App() {
           href={amazonLink}
           onClick={() => {
             if (typeof window.fbq === "function") {
-              window.fbq("trackCustom", "CTA_Click");
+              window.fbq("track", "Lead");
             }
           }}
           className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
