@@ -1,6 +1,8 @@
 import AmazonLogo from "./components/amazon-logo";
 
 export default function App() {
+  const amazonLink = new URLSearchParams(window.location.search).get("amazon") ?? "#";
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white from-30% to-[#d4e4f4] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-[420px] flex flex-col items-center">
@@ -97,7 +99,7 @@ export default function App() {
       {/* Floating CTA Button */}
       <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center bg-gradient-to-t from-white/95 to-white/0 pb-6 pt-8 px-4">
         <a
-          href="#"
+          href={amazonLink}
           className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
         >
           <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
