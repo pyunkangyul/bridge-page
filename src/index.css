@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
 body {
   margin: 0;
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
 }

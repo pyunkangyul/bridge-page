@@ -1,20 +1,77 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import AmazonLogo from "./components/amazon-logo";
 
-export default function App() {
-  const params = new URLSearchParams(window.location.search);
+function CtaButton({ amazonLink }: { amazonLink: string }) {
+  return (
+    <>
+      <a
+        href={amazonLink}
+        onClick={() => {
+          if (typeof window.fbq === "function") {
+            window.fbq("track", "Lead");
+          }
+        }}
+        className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
+      >
+        <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
+        <AmazonLogo className="h-[18px] text-black" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="absolute right-6 w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <p className="text-[#4d4d4d] text-xs text-center">
+        Coupon will be automatically applied at checkout.
+      </p>
+    </>
+  );
+}
 
+export default function App() {
   const amazonLink = (() => {
+    const params = new URLSearchParams(window.location.search);
     for (const [, value] of params) {
       if (/amazon\.com/i.test(value)) return value;
     }
     return "https://www.amazon.com/Moisturizer-Combination-Astringent-Certified-Zero-Irritation/dp/B06ZZK3YJY";
   })();
 
-  const ctaVariant = params.get("cta") || "b"; // a: 흐름 포함, b: 하단 고정, c: 중앙+하단 고정
+  const contentRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const [isFloating, setIsFloating] = useState<boolean | null>(null);
+
+  useLayoutEffect(() => {
+    const getDvh = () => {
+      // dvh를 정확히 구하기 위해 CSS 환경변수 사용
+      const el = document.createElement("div");
+      el.style.height = "100dvh";
+      el.style.position = "fixed";
+      el.style.visibility = "hidden";
+      document.body.appendChild(el);
+      const dvh = el.offsetHeight;
+      document.body.removeChild(el);
+      return dvh;
+    };
+
+    const check = () => {
+      const contentHeight = contentRef.current?.scrollHeight ?? 0;
+      const ctaHeight = ctaRef.current?.offsetHeight ?? 0;
+      const viewportHeight = getDvh();
+      setIsFloating(contentHeight + ctaHeight > viewportHeight);
+    };
+
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-white from-30% to-[#d4e4f4] flex justify-center px-4 pt-10 ${ctaVariant === "b" ? "items-end pb-28" : "items-center"} ${ctaVariant === "c" ? "pb-28" : ""}`}>
-      <div className="w-full max-w-[420px] flex flex-col items-center">
+    <div
+      style={{ minHeight: "100dvh" }}
+      className={`bg-gradient-to-b from-white from-30% to-[#d4e4f4] flex justify-center px-4 pt-10 ${
+        isFloating ? "items-center pb-28" : "items-center"
+      } ${isFloating === null ? "invisible" : "visible"}`}
+    >
+      <div ref={contentRef} className="w-full max-w-[420px] flex flex-col items-center">
         {/* Brand Logo */}
         <img
           src="/logo.png"
@@ -101,52 +158,23 @@ export default function App() {
           only via this link
         </p>
 
-        {/* A안: 콘텐츠 흐름에 포함 */}
-        {ctaVariant === "a" && (
+        {/* 인라인 CTA (화면에 다 들어갈 때) */}
+        {!isFloating && (
           <div className="flex flex-col items-center w-full pt-2">
-            <a
-              href={amazonLink}
-              onClick={() => {
-                if (typeof window.fbq === "function") {
-                  window.fbq("track", "Lead");
-                }
-              }}
-              className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
-            >
-              <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
-              <AmazonLogo className="h-[18px] text-black" />
-              <svg xmlns="http://www.w3.org/2000/svg" className="absolute right-6 w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-            <p className="text-[#4d4d4d] text-xs text-center">
-              Coupon will be automatically applied at checkout.
-            </p>
+            <CtaButton amazonLink={amazonLink} />
           </div>
         )}
       </div>
 
-      {/* B·C안: 하단 고정 */}
-      {(ctaVariant === "b" || ctaVariant === "c") && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center pb-6 pt-8 px-4">
-          <a
-            href={amazonLink}
-            onClick={() => {
-              if (typeof window.fbq === "function") {
-                window.fbq("track", "Lead");
-              }
-            }}
-            className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
-          >
-            <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
-            <AmazonLogo className="h-[18px] text-black" />
-            <svg xmlns="http://www.w3.org/2000/svg" className="absolute right-6 w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-          <p className="text-[#4d4d4d] text-xs text-center">
-            Coupon will be automatically applied at checkout.
-          </p>
+      {/* CTA 높이 측정용 (숨김) */}
+      <div ref={ctaRef} className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center pb-6 pt-8 px-4 pointer-events-none invisible">
+        <CtaButton amazonLink={amazonLink} />
+      </div>
+
+      {/* 플로팅 CTA (스크롤 필요할 때) */}
+      {isFloating && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center pb-6 pt-8 px-4 bg-gradient-to-t from-[#d4e4f4] from-60% to-transparent">
+          <CtaButton amazonLink={amazonLink} />
         </div>
       )}
     </div>
