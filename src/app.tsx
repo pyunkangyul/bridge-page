@@ -1,7 +1,13 @@
 import AmazonLogo from "./components/amazon-logo";
 
 export default function App() {
-  const amazonLink = new URLSearchParams(window.location.search).get("amazon") ?? "#";
+  const amazonLink = (() => {
+    const params = new URLSearchParams(window.location.search);
+    for (const [, value] of params) {
+      if (/amazon\.com/i.test(value)) return value;
+    }
+    return "https://www.amazon.com/Moisturizer-Combination-Astringent-Certified-Zero-Irritation/dp/B06ZZK3YJY";
+  })();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white from-30% to-[#d4e4f4] flex items-center justify-center px-4 py-10">
