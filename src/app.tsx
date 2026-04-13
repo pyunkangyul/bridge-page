@@ -90,10 +90,15 @@ export default function App() {
           only via this link
         </p>
 
-        {/* CTA Button */}
+        {/* Spacer for floating button */}
+        <div className="h-28" />
+      </div>
+
+      {/* Floating CTA Button */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center bg-gradient-to-t from-white/95 to-white/0 pb-6 pt-8 px-4">
         <a
           href="#"
-          className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors mb-4"
+          className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
         >
           <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
           <AmazonLogo className="h-[18px] text-black" />
@@ -112,8 +117,6 @@ export default function App() {
             />
           </svg>
         </a>
-
-        {/* Footer Text */}
         <p className="text-[#4d4d4d] text-xs text-center">
           Coupon will be automatically applied at checkout.
         </p>
