@@ -100,6 +100,11 @@ export default function App() {
       <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center bg-gradient-to-t from-white/95 to-white/0 pb-6 pt-8 px-4">
         <a
           href={amazonLink}
+          onClick={() => {
+            if (typeof window.fbq === "function") {
+              window.fbq("trackCustom", "CTA_Click");
+            }
+          }}
           className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
         >
           <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
