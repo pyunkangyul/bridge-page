@@ -1,16 +1,19 @@
 import AmazonLogo from "./components/amazon-logo";
 
 export default function App() {
+  const params = new URLSearchParams(window.location.search);
+
   const amazonLink = (() => {
-    const params = new URLSearchParams(window.location.search);
     for (const [, value] of params) {
       if (/amazon\.com/i.test(value)) return value;
     }
     return "https://www.amazon.com/Moisturizer-Combination-Astringent-Certified-Zero-Irritation/dp/B06ZZK3YJY";
   })();
 
+  const ctaVariant = params.get("cta") || "b"; // a: 흐름 포함, b: 하단 고정, c: 중앙+하단 고정
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white from-30% to-[#d4e4f4] flex items-center justify-center px-4 py-10">
+    <div className={`min-h-screen bg-gradient-to-b from-white from-30% to-[#d4e4f4] flex justify-center px-4 pt-10 ${ctaVariant === "b" ? "items-end pb-28" : "items-center"} ${ctaVariant === "c" ? "pb-28" : ""}`}>
       <div className="w-full max-w-[420px] flex flex-col items-center">
         {/* Brand Logo */}
         <img
@@ -98,42 +101,54 @@ export default function App() {
           only via this link
         </p>
 
-        {/* Spacer for floating button */}
-        <div className="h-28" />
+        {/* A안: 콘텐츠 흐름에 포함 */}
+        {ctaVariant === "a" && (
+          <div className="flex flex-col items-center w-full pt-2">
+            <a
+              href={amazonLink}
+              onClick={() => {
+                if (typeof window.fbq === "function") {
+                  window.fbq("track", "Lead");
+                }
+              }}
+              className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
+            >
+              <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
+              <AmazonLogo className="h-[18px] text-black" />
+              <svg xmlns="http://www.w3.org/2000/svg" className="absolute right-6 w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <p className="text-[#4d4d4d] text-xs text-center">
+              Coupon will be automatically applied at checkout.
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Floating CTA Button */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center bg-gradient-to-t from-white/95 to-white/0 pb-6 pt-8 px-4">
-        <a
-          href={amazonLink}
-          onClick={() => {
-            if (typeof window.fbq === "function") {
-              window.fbq("track", "Lead");
-            }
-          }}
-          className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
-        >
-          <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
-          <AmazonLogo className="h-[18px] text-black" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute right-6 w-5 h-5 text-black"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2.5}
+      {/* B·C안: 하단 고정 */}
+      {(ctaVariant === "b" || ctaVariant === "c") && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center pb-6 pt-8 px-4">
+          <a
+            href={amazonLink}
+            onClick={() => {
+              if (typeof window.fbq === "function") {
+                window.fbq("track", "Lead");
+              }
+            }}
+            className="group relative flex items-center justify-center gap-3 w-full max-w-[340px] bg-[#FFA41C] hover:bg-[#f09800] text-black rounded-full py-4 px-8 transition-colors shadow-lg mb-2"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </a>
-        <p className="text-[#4d4d4d] text-xs text-center">
-          Coupon will be automatically applied at checkout.
-        </p>
-      </div>
+            <span className="text-base font-bold tracking-wider leading-none">SHOP ON</span>
+            <AmazonLogo className="h-[18px] text-black" />
+            <svg xmlns="http://www.w3.org/2000/svg" className="absolute right-6 w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <p className="text-[#4d4d4d] text-xs text-center">
+            Coupon will be automatically applied at checkout.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
