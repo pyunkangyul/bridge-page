@@ -106,7 +106,7 @@ https://shop.pyunkangyul.com/?link=https://www.amazon.com/dp/XXXXXXXXXX
 
 - **Pixel ID**: `965145019301682`
 - `index.html`에서 `PageView` 이벤트 자동 추적
-- CTA 버튼 클릭 시 `Lead` 이벤트 발생 (`window.fbq('track', 'Lead')`)
+- CTA 버튼 클릭 시 `Purchase` 이벤트 발생 (`window.fbq('track', 'Purchase')`)
 - `noscript` fallback 포함
 
 ## 웹폰트
