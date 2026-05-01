@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Route } from "./+types/toner";
 import BarrierStrengthSection from "../components/toner/barrier-strength-section";
-import CtaButton from "../components/toner/cta-button";
+import CtaButton from "../components/cta-button";
 import DeepEssenceSection from "../components/toner/deep-essence-section";
 import HeroSection from "../components/toner/hero-section";
 import TrustedBarrierSection from "../components/toner/trusted-barrier-section";

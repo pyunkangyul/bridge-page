@@ -1,4 +1,4 @@
-import AmazonLogo from "../amazon-logo";
+import AmazonLogo from "./amazon-logo";
 
 export default function CtaButton({ amazonLink }: { amazonLink: string }) {
   return (
