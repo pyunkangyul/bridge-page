@@ -22,6 +22,7 @@ export const meta: Route.MetaFunction = () => [
     content:
       "Pyunkang Yul, Essence Toner, Korean Skincare, K-Beauty, Barrier Toner, Amazon Deal",
   },
+  { name: "robots", content: "index, follow" },
   { property: "og:type", content: "website" },
   { property: "og:title", content: OG_TITLE },
   { property: "og:description", content: OG_DESCRIPTION },
