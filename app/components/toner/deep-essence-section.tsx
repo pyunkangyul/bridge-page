@@ -36,7 +36,7 @@ const FEATURES = [
 
 export default function DeepEssenceSection() {
   return (
-    <section className="bg-white">
+    <section className="mt-[clamp(-108px,-14vw,-72px)] bg-white">
       <div
         className="relative mx-auto w-full max-w-[750px] overflow-hidden bg-white"
         style={{ aspectRatio: "750 / 1107" }}

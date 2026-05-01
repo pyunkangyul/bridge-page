@@ -17,7 +17,7 @@ function ReviewCard({ children }: { children: ReactNode }) {
 
 export default function TrustedBarrierSection() {
   return (
-    <section className="bg-white">
+    <section className="mt-[clamp(-108px,-14vw,-72px)] bg-white">
       <div
         className="relative mx-auto w-[100svw] max-w-[750px] overflow-hidden bg-white"
         style={{ aspectRatio: "750 / 1035" }}
