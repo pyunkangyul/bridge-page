@@ -4,7 +4,7 @@
     "target": "es2023",
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "module": "esnext",
-    "types": ["vite/client"],
+    "types": ["vite/client", "@react-router/node"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -15,11 +15,19 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Path aliases */
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* React Router auto-generated types */
+    "rootDirs": [".", "./.react-router/types"]
   },
-  "include": ["src"]
+  "include": ["app", ".react-router/types/**/*"]
 }
