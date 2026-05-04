@@ -1,10 +1,14 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLocation } from "react-router";
 import type { Route } from "./+types/root";
 import "./app.css";
 
-const FB_PIXEL_ID = "965145019301682";
+const DEFAULT_FB_PIXEL_ID = "965145019301682";
+const FB_PIXEL_BY_PATH: Record<string, string> = {
+  "/": "965145019301682",
+  "/toner": "1297839348982517",
+};
 
-const FB_PIXEL_SCRIPT = `!function(f,b,e,v,n,t,s)
+const buildFbPixelScript = (pixelId: string) => `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -12,7 +16,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${FB_PIXEL_ID}');
+fbq('init', '${pixelId}');
 fbq('track', 'PageView');`;
 
 export const links: Route.LinksFunction = () => [
@@ -38,6 +42,10 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+  const normalizedPath = pathname.replace(/\/+$/, "") || "/";
+  const pixelId = FB_PIXEL_BY_PATH[normalizedPath] ?? DEFAULT_FB_PIXEL_ID;
+
   return (
     <html lang="en">
       <head>
@@ -46,7 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="author" content="Pyunkang Yul" />
         <Meta />
         <Links />
-        <script dangerouslySetInnerHTML={{ __html: FB_PIXEL_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: buildFbPixelScript(pixelId) }} />
       </head>
       <body>
         <noscript>
@@ -54,7 +62,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             height="1"
             width="1"
             style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+            src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
             alt=""
           />
         </noscript>

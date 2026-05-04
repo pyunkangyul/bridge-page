@@ -1,12 +1,21 @@
 import AmazonLogo from "./amazon-logo";
 
-export default function CtaButton({ amazonLink }: { amazonLink: string }) {
+export default function CtaButton({
+  amazonLink,
+  pixelId,
+}: {
+  amazonLink: string;
+  pixelId?: string;
+}) {
   return (
     <>
       <a
         href={amazonLink}
         onClick={() => {
-          if (typeof window.fbq === "function") {
+          if (typeof window.fbq !== "function") return;
+          if (pixelId) {
+            window.fbq("trackSingle", pixelId, "Purchase");
+          } else {
             window.fbq("track", "Purchase");
           }
         }}

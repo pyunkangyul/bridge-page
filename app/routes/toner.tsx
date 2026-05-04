@@ -9,6 +9,8 @@ import TrustedBarrierSection from "../components/toner/trusted-barrier-section";
 const DEFAULT_AMAZON_LINK =
   "https://www.amazon.com/Moisturizer-Combination-Astringent-Certified-Zero-Irritation/dp/B06ZZK3YJY";
 
+const TONER_FB_PIXEL_ID = "1297839348982517";
+
 const PAGE_TITLE = "ESSENCE TONER - Pyunkang Yul";
 const PAGE_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water, this toner delivers deep hydration and strengthens the skin barrier. With only 7 essential ingredients, it offers a fresh, non-sticky feel that's gentle enough for sensitive skin.";
@@ -59,7 +61,7 @@ export default function Toner() {
       <DeepEssenceSection />
 
       <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center pb-6 pt-8 px-4 bg-gradient-to-t from-white via-white/95 from-50% to-transparent">
-        <CtaButton amazonLink={amazonLink} />
+        <CtaButton amazonLink={amazonLink} pixelId={TONER_FB_PIXEL_ID} />
       </div>
     </div>
   );
