@@ -1,6 +1,11 @@
+import productGinsengImage from "../../assets/toner/product-ginseng.png";
+import rootIcon from "../../assets/toner/icons/root.png";
+import textureIcon from "../../assets/toner/icons/texture.png";
+import veganIcon from "../../assets/toner/icons/vegan.png";
+
 const FEATURES = [
   {
-    icon: "/icons/toner-root.png",
+    icon: rootIcon,
     alt: "",
     text: (
       <>
@@ -11,7 +16,7 @@ const FEATURES = [
     ),
   },
   {
-    icon: "/icons/toner-texture.png",
+    icon: textureIcon,
     alt: "",
     text: (
       <>
@@ -22,7 +27,7 @@ const FEATURES = [
     ),
   },
   {
-    icon: "/icons/toner-vegan.png",
+    icon: veganIcon,
     alt: "",
     text: (
       <>
@@ -75,7 +80,7 @@ export default function DeepEssenceSection() {
         />
 
         <img
-          src="/product-ginseng.png"
+          src={productGinsengImage}
           alt="Pyunkang Yul Essence Toner with astragalus root"
           className="pointer-events-none absolute left-0 top-[24.3%] w-full select-none"
         />

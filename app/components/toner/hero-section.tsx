@@ -1,8 +1,11 @@
+import logoImage from "../../assets/brand/logo.png";
+import productImage from "../../assets/toner/product.webp";
+
 export default function HeroSection() {
   return (
     <section className="flex justify-center bg-gradient-to-b from-white from-30% to-[#d4e4f4] px-4 pt-10 pb-12">
       <div className="flex w-full max-w-[750px] flex-col items-center">
-        <img src="/logo.png" alt="Pyunkang Yul" className="h-5 mb-4" />
+        <img src={logoImage} alt="Pyunkang Yul" className="h-5 mb-4" />
 
         <h2
           className="text-[#111827] text-xl font-bold mb-1"
@@ -72,7 +75,7 @@ export default function HeroSection() {
           </div>
 
           <img
-            src="/product.webp"
+            src={productImage}
             alt="Pyunkang Yul Essence Toner"
             className="w-[240px] md:w-[280px] drop-shadow-2xl"
           />

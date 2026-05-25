@@ -26,6 +26,7 @@ Pyunkang Yul Essence Toner 제품의 Amazon 할인 프로모션용 브릿지 페
 | 구분 | 기술 | 버전 |
 |------|------|------|
 | UI 프레임워크 | React | 19 |
+| 라우팅 | React Router | 7 |
 | 언어 | TypeScript | 6 |
 | 빌드 도구 | Vite | 8 |
 | 스타일링 | Tailwind CSS v4 | 4.2 |
@@ -37,19 +38,19 @@ Pyunkang Yul Essence Toner 제품의 Amazon 할인 프로모션용 브릿지 페
 
 ```
 bridge-page/
-├── index.html              # HTML 엔트리 (Meta Pixel, 메타태그, 웹폰트)
-├── src/
-│   ├── main.tsx            # React 엔트리포인트
-│   ├── app.tsx             # 전체 페이지 레이아웃 + CtaButton 컴포넌트
-│   ├── index.css           # Tailwind CSS 임포트 + 전역 스타일
-│   ├── global.d.ts         # window.fbq 타입 선언
-│   └── components/
-│       └── amazon-logo.tsx # Amazon SVG 로고 컴포넌트
+├── app/
+│   ├── routes/             # `/`, `/toner` 페이지
+│   ├── components/         # 공용 컴포넌트 + toner 섹션 컴포넌트
+│   ├── assets/             # Vite가 번들링하는 렌더링 이미지
+│   │   ├── brand/
+│   │   │   └── logo.png
+│   │   └── toner/
+│   ├── root.tsx            # HTML shell, 메타/폰트/Pixel 설정
+│   ├── app.css             # Tailwind CSS 임포트 + 전역 스타일
+│   └── global.d.ts         # window.fbq 및 이미지 import 타입 선언
 ├── public/
-│   ├── product.webp        # 제품 이미지 (메인)
-│   ├── product.png         # 제품 이미지 (원본)
-│   ├── logo.png            # Pyunkang Yul 브랜드 로고
-│   ├── favicon.svg         # 파비콘
+│   ├── og/
+│   │   └── toner.webp      # 소셜 공유용 고정 URL 이미지
 │   ├── robots.txt          # SEO 크롤러 설정
 │   ├── sitemap.xml         # 사이트맵
 │   └── ...                 # 기타 파비콘/매니페스트 파일
@@ -83,7 +84,7 @@ pnpm lint
 
 ### Amazon 링크 동적 설정
 
-`app.tsx`에서 URL 쿼리 파라미터를 파싱하여 Amazon 링크를 동적으로 결정합니다.
+라우트 컴포넌트에서 URL 쿼리 파라미터를 파싱하여 Amazon 링크를 동적으로 결정합니다.
 
 ```
 https://shop.pyunkangyul.com/?link=https://www.amazon.com/dp/XXXXXXXXXX
@@ -104,8 +105,8 @@ https://shop.pyunkangyul.com/?link=https://www.amazon.com/dp/XXXXXXXXXX
 
 ### Facebook Pixel 추적
 
-- **Pixel ID**: `965145019301682`
-- `index.html`에서 `PageView` 이벤트 자동 추적
+- **기본 Pixel ID**: `965145019301682`
+- `app/root.tsx`에서 경로별 Pixel ID로 `PageView` 이벤트 자동 추적
 - CTA 버튼 클릭 시 `Purchase` 이벤트 발생 (`window.fbq('track', 'Purchase')`)
 - `noscript` fallback 포함
 
@@ -125,7 +126,7 @@ https://shop.pyunkangyul.com/?link=https://www.amazon.com/dp/XXXXXXXXXX
 
 ## 주의사항
 
-- **단일 페이지 앱**으로 라우팅이 없습니다. 모든 콘텐츠가 `app.tsx` 하나에 있습니다.
+- React Router 라우트는 `app/routes.ts`에서 관리합니다.
 - Tailwind CSS v4의 CSS-first 설정을 사용하므로 `tailwind.config.js` 파일이 없습니다.
-- Facebook Pixel ID 변경 시 `index.html`의 `<script>` 태그와 `<noscript>` 태그 모두 수정해야 합니다.
-- 제품 이미지는 `public/product.webp`를 사용합니다. 교체 시 동일 파일명으로 덮어쓰면 됩니다.
+- Facebook Pixel ID 변경 시 `app/root.tsx`의 `FB_PIXEL_BY_PATH`를 수정합니다.
+- 렌더링용 제품 이미지는 `app/assets/toner/product.webp`를 사용합니다. OG 이미지는 `public/og/toner.webp`를 사용합니다.

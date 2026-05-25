@@ -16,7 +16,7 @@ const PAGE_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water, this toner delivers deep hydration and strengthens the skin barrier. With only 7 essential ingredients, it offers a fresh, non-sticky feel that's gentle enough for sensitive skin.";
 const OG_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water. Deep hydration, barrier strengthening, only 7 essential ingredients.";
-const OG_IMAGE = "https://shop.pyunkangyul.com/product.webp";
+const OG_IMAGE = "https://shop.pyunkangyul.com/og/toner.webp";
 const PAGE_URL = "https://shop.pyunkangyul.com/toner";
 const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 15% OFF";
 

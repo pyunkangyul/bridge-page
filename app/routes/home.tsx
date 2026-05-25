@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { Route } from "./+types/home";
+import logoImage from "../assets/brand/logo.png";
+import productImage from "../assets/toner/product.webp";
 import CtaButton from "../components/cta-button";
 
 const DEFAULT_AMAZON_LINK =
@@ -10,7 +12,7 @@ const PAGE_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water, this toner delivers deep hydration and strengthens the skin barrier. With only 7 essential ingredients, it offers a fresh, non-sticky feel that's gentle enough for sensitive skin. Fast-absorbing, it can be applied with a cotton pad or used as a sheet mask for rich hydration. Achieve balanced, radiant skin with Pyunkang Yul's gentle yet effective skincare philosophy.";
 const OG_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water. Deep hydration, barrier strengthening, only 7 essential ingredients. Gentle yet effective for sensitive skin.";
-const OG_IMAGE = "https://shop.pyunkangyul.com/product.webp";
+const OG_IMAGE = "https://shop.pyunkangyul.com/og/toner.webp";
 const PAGE_URL = "https://shop.pyunkangyul.com/";
 const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 15% OFF";
 
@@ -89,7 +91,7 @@ export default function Home() {
       <div ref={contentRef} className="w-full max-w-[420px] flex flex-col items-center">
         {/* Brand Logo */}
         <img
-          src="/logo.png"
+          src={logoImage}
           alt="Pyunkang Yul"
           className="h-5 mb-4"
         />
@@ -158,7 +160,7 @@ export default function Home() {
 
           {/* Product Image */}
           <img
-            src="/product.webp"
+            src={productImage}
             alt="Pyunkang Yul Essence Toner"
             className="w-[240px] md:w-[280px] drop-shadow-2xl"
           />

@@ -1,3 +1,8 @@
+import afterImage from "../../assets/toner/after.png";
+import beforeImage from "../../assets/toner/before.png";
+import productImage from "../../assets/toner/product.webp";
+import veganLogo from "../../assets/toner/vegan.png";
+
 export default function BarrierStrengthSection() {
   return (
     <section className="bg-white">
@@ -5,6 +10,12 @@ export default function BarrierStrengthSection() {
         className="relative mx-auto w-full max-w-[750px] overflow-hidden bg-white"
         style={{ aspectRatio: "750 / 1139" }}
       >
+        <img
+          src={veganLogo}
+          alt="Vegan certified"
+          className="absolute left-[6.2%] top-[4.2%] z-20 w-[13.5%]"
+        />
+
         <div
           className="absolute left-[-11%] top-[45.5%] h-[34%] w-[49%] rounded-full border border-[#d9dde8]/55 opacity-70"
           aria-hidden="true"
@@ -41,7 +52,7 @@ export default function BarrierStrengthSection() {
         <div className="absolute left-[8.7%] top-[38.4%] grid w-[82.4%] grid-cols-2 gap-[1.8%]">
           <div>
             <img
-              src="/before.png"
+              src={beforeImage}
               alt="Skin before using Essence Toner"
               className="block aspect-[255/210] w-full object-cover"
             />
@@ -55,7 +66,7 @@ export default function BarrierStrengthSection() {
 
           <div className="relative border-[3px] border-[#172571] border-b-0">
             <img
-              src="/after.png"
+              src={afterImage}
               alt="Skin after using Essence Toner"
               className="block aspect-[255/210] w-full object-cover"
             />
@@ -108,7 +119,7 @@ export default function BarrierStrengthSection() {
         </div>
 
         <img
-          src="/product.webp"
+          src={productImage}
           alt="Pyunkang Yul Essence Toner bottle"
           className="absolute right-[8.9%] top-[65.9%] h-[17.4%] w-auto object-contain drop-shadow-[8px_18px_8px_rgba(0,0,0,0.18)]"
         />

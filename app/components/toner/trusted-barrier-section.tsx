@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import handImage from "../../assets/toner/hand.png";
 
 function ReviewCard({ children }: { children: ReactNode }) {
   return (
@@ -38,7 +39,7 @@ export default function TrustedBarrierSection() {
         </div>
 
         <img
-          src="/pyunkang-yul-toner-hand.png"
+          src={handImage}
           alt="Hand holding Pyunkang Yul Essence Toner"
           className="pointer-events-none absolute left-[-1.5%] top-[34.7%] w-[50%] select-none"
         />

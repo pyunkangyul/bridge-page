@@ -39,7 +39,7 @@ GitHub Pages는 디렉터리 = URL로 매핑하므로 **404 트릭이나 SPA 리
 수정 시 깨지기 쉬운 동작들 — 변경 전 반드시 숙지:
 
 ### 1. Amazon 링크는 쿼리 파라미터에서 동적으로 추출 (SSR-safe)
-[app/routes/home.tsx](app/routes/home.tsx)에서 `useState(DEFAULT) + useEffect`로 처리. prerender 시점에는 `window`가 없으므로 컴포넌트 본문에서 직접 읽으면 빌드가 깨짐. 동작:
+[app/routes/home.tsx](app/routes/home.tsx), [app/routes/toner.tsx](app/routes/toner.tsx)에서 `useState(DEFAULT) + useEffect`로 처리. prerender 시점에는 `window`가 없으므로 컴포넌트 본문에서 직접 읽으면 빌드가 깨짐. 동작:
 - 빌드: HTML에 `DEFAULT_AMAZON_LINK`가 박힘
 - 클라이언트 마운트 후: `useEffect`가 `URLSearchParams`를 순회하여 **value에 `amazon.com`이 포함된 첫 파라미터**를 발견하면 `setAmazonLink`로 즉시 교체. key 이름은 무관 (`?link=...`, `?url=...` 모두 동작).
 
@@ -53,9 +53,9 @@ GitHub Pages는 디렉터리 = URL로 매핑하므로 **404 트릭이나 SPA 리
 - `resize` 리스너로 회전/리사이즈 시 재측정
 
 ### 3. Facebook Pixel 추적
-- Pixel ID `965145019301682`는 [app/root.tsx](app/root.tsx) 상단의 `FB_PIXEL_ID` 상수에서 한 곳으로 관리 (인라인 스크립트 + `<noscript>` 양쪽에서 참조). 원본 [index.html](index.html)이 두 곳에 하드코딩하던 것을 통합.
+- 기본 Pixel ID와 경로별 Pixel ID는 [app/root.tsx](app/root.tsx) 상단의 `DEFAULT_FB_PIXEL_ID`, `FB_PIXEL_BY_PATH`에서 관리 (인라인 스크립트 + `<noscript>` 양쪽에서 참조).
 - `PageView`는 페이지 로드 시 자동 발화 (`<head>` 인라인 스크립트). React hydration이 인라인 스크립트를 재실행시키지 않으므로 이중 발화 없음.
-- `Purchase`는 CTA 클릭 시 [app/routes/home.tsx](app/routes/home.tsx)의 `window.fbq("track", "Purchase")`로 발생.
+- `Purchase`는 CTA 클릭 시 [app/components/cta-button.tsx](app/components/cta-button.tsx)에서 발생. `pixelId`가 있으면 `trackSingle`, 없으면 `track`을 사용.
 - `window.fbq` 타입은 [app/global.d.ts](app/global.d.ts)에 선언됨.
 - ⚠️ SPA 모드라 라우트 간 클라이언트 네비게이션 시 PageView가 자동 재발화되지 않음. 광고 직접 진입(전체 새로고침)에서는 정상. 다중 라우트에서 라우트 변경마다 PageView를 원하면 라우트 컴포넌트에 `useEffect(() => window.fbq?.("track", "PageView"), [])` 필요.
 
@@ -67,7 +67,8 @@ GitHub Pages는 디렉터리 = URL로 매핑하므로 **404 트릭이나 SPA 리
 - [app/components/](app/components/) — Amazon SVG 로고 등 공용 컴포넌트
 - [app/app.css](app/app.css) — Tailwind 임포트 + 전역 스타일
 - [app/global.d.ts](app/global.d.ts) — `window.fbq` 타입 선언
-- [public/](public/) — 정적 자산(`product.webp`, `logo.png`, 파비콘 세트, `CNAME`, `robots.txt`, `sitemap.xml`)
+- [app/assets/](app/assets/) — Vite가 번들링하는 렌더링용 이미지(`brand/`, `toner/`)
+- [public/](public/) — 고정 URL 정적 자산(`og/toner.webp`, 파비콘 세트, `CNAME`, `robots.txt`, `sitemap.xml`)
 
 ## Conventions
 
