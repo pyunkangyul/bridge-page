@@ -12,7 +12,13 @@ function trackPurchase(pixelId?: string) {
   }
 }
 
-export default function BridgeSection({ amazonLink }: { amazonLink: string }) {
+export default function BridgeSection({
+  amazonLink,
+  pixelId,
+}: {
+  amazonLink: string;
+  pixelId?: string;
+}) {
   return (
     <section style={{ background: PAGE_BACKGROUND }}>
       <div
@@ -28,7 +34,7 @@ export default function BridgeSection({ amazonLink }: { amazonLink: string }) {
         <a
           href={amazonLink}
           aria-label="Shop Pyunkang Yul Calming Moisture Barrier Cream on Amazon"
-          onClick={() => trackPurchase()}
+          onClick={() => trackPurchase(pixelId)}
           className="absolute left-[14.67%] top-[84.6%] h-[7.16%] w-[70.67%] rounded-full"
         />
       </div>

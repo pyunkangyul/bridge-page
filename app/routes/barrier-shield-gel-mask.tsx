@@ -5,6 +5,8 @@ import HeroSection from "../components/barrier-shield-gel-mask/hero-section";
 const DEFAULT_AMAZON_LINK =
   "https://www.amazon.com/s?k=Pyunkang+Yul+Barrier+Shield+Gel+Mask";
 
+const BARRIER_SHIELD_GEL_MASK_FB_PIXEL_ID = "1617572582680265";
+
 const PAGE_TITLE = "Barrier Shield Gel Mask - Pyunkang Yul";
 const PAGE_DESCRIPTION =
   "Pyunkang Yul Barrier Shield Gel Mask delivers adhesive moisture care for a comfortable skin barrier, with before and after barrier care benefits highlighted for sensitive skin.";
@@ -84,7 +86,10 @@ export default function BarrierShieldGelMask() {
       } ${isCentered === null ? "invisible" : "visible"}`}
     >
       <div ref={contentRef} className="w-full">
-        <HeroSection amazonLink={amazonLink} />
+        <HeroSection
+          amazonLink={amazonLink}
+          pixelId={BARRIER_SHIELD_GEL_MASK_FB_PIXEL_ID}
+        />
       </div>
     </main>
   );

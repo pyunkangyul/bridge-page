@@ -6,6 +6,8 @@ const DEFAULT_FB_PIXEL_ID = "965145019301682";
 const FB_PIXEL_BY_PATH: Record<string, string> = {
   "/": "965145019301682",
   "/toner": "1297839348982517",
+  "/barrier-shield-gel-mask": "1617572582680265",
+  "/calming-moisture-barrier-cream": "1327586456014708",
 };
 
 const buildFbPixelScript = (pixelId: string) => `!function(f,b,e,v,n,t,s)

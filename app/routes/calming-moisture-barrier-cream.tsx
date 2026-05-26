@@ -5,6 +5,8 @@ import BridgeSection from "../components/calming-moisture-barrier-cream/bridge-s
 const DEFAULT_AMAZON_LINK =
   "https://www.amazon.com/PYUNKANG-YUL-Calming-Moisture-Barrier/dp/B09X9Q6494/";
 
+const CALMING_MOISTURE_BARRIER_CREAM_FB_PIXEL_ID = "1327586456014708";
+
 const PAGE_TITLE = "Calming Moisture Barrier Cream - Pyunkang Yul";
 const PAGE_DESCRIPTION =
   "Pyunkang Yul Calming Moisture Barrier Cream supports sensitive, acne-prone skin with soothing moisture barrier care, Centella Asiatica, ceramide, and lasting hydration.";
@@ -86,7 +88,10 @@ export default function CalmingMoistureBarrierCream() {
       } ${isCentered === null ? "invisible" : "visible"}`}
     >
       <div ref={contentRef} className="w-full">
-        <BridgeSection amazonLink={amazonLink} />
+        <BridgeSection
+          amazonLink={amazonLink}
+          pixelId={CALMING_MOISTURE_BARRIER_CREAM_FB_PIXEL_ID}
+        />
       </div>
     </main>
   );

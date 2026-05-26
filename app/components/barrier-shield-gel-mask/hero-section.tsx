@@ -21,7 +21,13 @@ function ArrowIcon({ direction }: { direction: "down" | "up" }) {
   );
 }
 
-export default function HeroSection({ amazonLink }: { amazonLink: string }) {
+export default function HeroSection({
+  amazonLink,
+  pixelId,
+}: {
+  amazonLink: string;
+  pixelId?: string;
+}) {
   return (
     <section className="flex justify-center" style={{ background: PAGE_BACKGROUND }}>
       <div
@@ -105,7 +111,12 @@ export default function HeroSection({ amazonLink }: { amazonLink: string }) {
         </div>
 
         <div className="absolute left-[14.7%] top-[84.7%] z-20 h-[7.2%] w-[70.7%]">
-          <CtaButton amazonLink={amazonLink} showCaption={false} variant="artwork" />
+          <CtaButton
+            amazonLink={amazonLink}
+            pixelId={pixelId}
+            showCaption={false}
+            variant="artwork"
+          />
         </div>
       </div>
     </section>
