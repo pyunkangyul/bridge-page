@@ -47,7 +47,7 @@ export default function HeroSection() {
                     fontFamily="'Poppins', sans-serif"
                     fontStyle="italic"
                   >
-                    15%
+                    20%
                   </text>
                 </svg>
                 <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">OFF</span>
@@ -83,10 +83,9 @@ export default function HeroSection() {
 
         <p className="text-center text-[#111827] text-base md:text-lg font-semibold leading-snug">
           Get your Exclusive{" "}
-          <span className="text-[#436adf] font-bold">20%</span> OFF{" "}
-          <span className="text-[#436adf] font-bold">15%</span>
+          <span className="text-[#436adf] font-bold">20%</span> OFF
           <br />
-          (15% coupon + This Ad Only extra OFF)
+          (20% coupon + This Ad Only extra OFF)
         </p>
       </div>
     </section>

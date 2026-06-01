@@ -14,7 +14,7 @@ const OG_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water. Deep hydration, barrier strengthening, only 7 essential ingredients. Gentle yet effective for sensitive skin.";
 const OG_IMAGE = "https://shop.pyunkangyul.com/og/toner.webp";
 const PAGE_URL = "https://shop.pyunkangyul.com/";
-const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 15% OFF";
+const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 20% OFF";
 
 export const meta: Route.MetaFunction = () => [
   { title: PAGE_TITLE },
@@ -106,7 +106,7 @@ export default function Home() {
 
         {/* Product Image Area */}
         <div className="relative w-full flex justify-center mb-8">
-          {/* GET 15% OFF Badge */}
+          {/* GET 20% OFF Badge */}
           <div className="absolute right-2 md:right-6 top-0 z-10">
             <div className="w-[78px] h-[78px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
               <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
@@ -134,7 +134,7 @@ export default function Home() {
                     fontFamily="'Poppins', sans-serif"
                     fontStyle="italic"
                   >
-                    15%
+                    20%
                   </text>
                 </svg>
                 <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">OFF</span>
@@ -169,10 +169,9 @@ export default function Home() {
         {/* Discount Text */}
         <p className="text-center text-[#111827] text-base md:text-lg font-semibold leading-snug mb-6">
           Get your Exclusive{" "}
-          <span className="text-[#436adf] font-bold">20%</span> OFF{" "}
-          <span className="text-[#436adf] font-bold">15%</span>
+          <span className="text-[#436adf] font-bold">20%</span> OFF
           <br />
-          (15% coupon + This Ad Only extra OFF)
+          (20% coupon + This Ad Only extra OFF)
         </p>
 
         {/* 인라인 CTA (화면에 다 들어갈 때) */}

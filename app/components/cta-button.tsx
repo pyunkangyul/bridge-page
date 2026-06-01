@@ -58,8 +58,9 @@ export default function CtaButton({
         </svg>
       </a>
       {showCaption && (
-        <p className="text-[#4d4d4d] text-xs text-center">
-          Coupon will be automatically applied at checkout.
+        <p className="w-full max-w-[340px] text-center text-xs leading-snug text-[#4d4d4d]">
+          <span className="block">⚠️ The extra OFF is automatically applied at FINAL checkout</span>
+          <span className="block">⚠️ Offer valid while supplies last.</span>
         </p>
       )}
     </>
