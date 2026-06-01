@@ -168,11 +168,11 @@ export default function Home() {
 
         {/* Discount Text */}
         <p className="text-center text-[#111827] text-base md:text-lg font-semibold leading-snug mb-6">
-          Get your{" "}
-          <span className="text-[#436adf] font-bold">15%</span> Amazon
-          discount
+          Get your Exclusive{" "}
+          <span className="text-[#436adf] font-bold">20%</span> OFF{" "}
+          <span className="text-[#436adf] font-bold">15%</span>
           <br />
-          only via this link
+          (15% coupon + This Ad Only extra OFF)
         </p>
 
         {/* 인라인 CTA (화면에 다 들어갈 때) */}

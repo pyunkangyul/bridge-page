@@ -82,10 +82,11 @@ export default function HeroSection() {
         </div>
 
         <p className="text-center text-[#111827] text-base md:text-lg font-semibold leading-snug">
-          Get your{" "}
-          <span className="text-[#436adf] font-bold">15%</span> Amazon discount
+          Get your Exclusive{" "}
+          <span className="text-[#436adf] font-bold">20%</span> OFF{" "}
+          <span className="text-[#436adf] font-bold">15%</span>
           <br />
-          only via this link
+          (15% coupon + This Ad Only extra OFF)
         </p>
       </div>
     </section>
