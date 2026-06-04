@@ -16,7 +16,7 @@ const OG_IMAGE = "https://shop.pyunkangyul.com/og/barrier-shield-gel-mask.jpg";
 const PAGE_URL = "https://shop.pyunkangyul.com/barrier-shield-gel-mask";
 const OG_TITLE = "Barrier Shield Gel Mask - Pyunkang Yul";
 const PAGE_BACKGROUND =
-  "linear-gradient(90deg, #90bfe1 0%, #acd0ea 22%, #95c3e4 48%, #c0ddf0 68%, #c6e0f1 88%, #b2d2e8 100%) bottom / 100% 24% no-repeat, linear-gradient(180deg, #ffffff 0%, #ffffff 48%, #f9fbfe 62%, #dcecf7 74%, #bfdcf0 82%, #acd0ea 88%, #a9cee9 100%) center / 100% 100% no-repeat";
+  "linear-gradient(180deg, #ffffff 0%, #f7fbff 52%, #d7eefb 100%)";
 
 export const meta: Route.MetaFunction = () => [
   { title: PAGE_TITLE },
