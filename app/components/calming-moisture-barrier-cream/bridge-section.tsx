@@ -35,7 +35,7 @@ export default function BridgeSection({
           href={amazonLink}
           aria-label="Shop Pyunkang Yul Calming Moisture Barrier Cream on Amazon"
           onClick={() => trackPurchase(pixelId)}
-          className="absolute left-[14.67%] top-[84.6%] h-[7.16%] w-[70.67%] rounded-full"
+          className="absolute left-[14.67%] top-[80.62%] h-[6.92%] w-[70.67%] rounded-full"
         />
       </div>
     </section>
