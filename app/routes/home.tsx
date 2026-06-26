@@ -14,7 +14,7 @@ const OG_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water. Deep hydration, barrier strengthening, only 7 essential ingredients. Gentle yet effective for sensitive skin.";
 const OG_IMAGE = "https://shop.pyunkangyul.com/og/toner.webp";
 const PAGE_URL = "https://shop.pyunkangyul.com/";
-const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 20% OFF";
+const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 44% OFF";
 
 export const meta: Route.MetaFunction = () => [
   { title: PAGE_TITLE },
@@ -106,10 +106,10 @@ export default function Home() {
 
         {/* Product Image Area */}
         <div className="relative w-full flex justify-center mb-8">
-          {/* GET 20% OFF Badge */}
+          {/* GET 44% OFF Badge */}
           <div className="absolute right-2 md:right-6 top-0 z-10">
-            <div className="w-[78px] h-[78px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
-              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
+            <div className="w-[88px] h-[88px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
+              <div className="relative w-[80px] h-[80px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
                 {/* Diagonal lines */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
                   <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
@@ -117,7 +117,7 @@ export default function Home() {
                   <div className="bg-white/8 w-[200%] h-[8px] rounded-full" />
                 </div>
                 <span className="relative z-[1] text-[12px] font-bold leading-tight text-white">GET</span>
-                <svg viewBox="0 0 60 28" className="relative z-[1] w-[56px] h-[26px]">
+                <svg viewBox="0 0 72 32" className="relative z-[1] w-[68px] h-[30px]">
                   <defs>
                     <linearGradient id="gold-gradient" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#FFD700" />
@@ -125,16 +125,16 @@ export default function Home() {
                     </linearGradient>
                   </defs>
                   <text
-                    x="30"
-                    y="24"
+                    x="36"
+                    y="27"
                     textAnchor="middle"
                     fill="url(#gold-gradient)"
                     fontWeight="800"
-                    fontSize="28"
+                    fontSize="30"
                     fontFamily="'Poppins', sans-serif"
                     fontStyle="italic"
                   >
-                    20%
+                    44%
                   </text>
                 </svg>
                 <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">OFF</span>
@@ -143,9 +143,9 @@ export default function Home() {
           </div>
 
           {/* 3M SOLD Badge */}
-          <div className="absolute right-2 md:right-6 top-[88px] z-10">
-            <div className="w-[78px] h-[78px] rounded-full bg-[#3257FE] flex items-center justify-center shadow-lg">
-              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
+          <div className="absolute right-2 md:right-6 top-[98px] z-10">
+            <div className="w-[88px] h-[88px] rounded-full bg-[#3257FE] flex items-center justify-center shadow-lg">
+              <div className="relative w-[80px] h-[80px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
                 {/* Diagonal lines */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
                   <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
@@ -168,10 +168,11 @@ export default function Home() {
 
         {/* Discount Text */}
         <p className="text-center text-[#111827] text-base md:text-lg font-semibold leading-snug mb-6">
-          Get your Exclusive{" "}
-          <span className="text-[#436adf] font-bold">20%</span> OFF
+          Get your Exclusive Discount
           <br />
-          (20% coupon + This Ad Only extra OFF)
+          Amazon Prime Day Deal{" "}
+          <span className="text-[#436adf] font-bold">41%</span> + Extra{" "}
+          <span className="text-[#436adf] font-bold">6%</span> OFF
         </p>
 
         {/* 인라인 CTA (화면에 다 들어갈 때) */}
