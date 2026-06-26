@@ -22,15 +22,15 @@ export default function HeroSection() {
 
         <div className="relative w-full flex justify-center mb-8">
           <div className="absolute left-1/2 top-0 z-10 translate-x-[78px] md:translate-x-[96px]">
-            <div className="w-[88px] h-[88px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
-              <div className="relative w-[80px] h-[80px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
+            <div className="w-[78px] h-[78px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
+              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
                   <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
                   <div className="bg-white/8 w-[200%] h-[4px] rounded-full" />
                   <div className="bg-white/8 w-[200%] h-[8px] rounded-full" />
                 </div>
                 <span className="relative z-[1] text-[12px] font-bold leading-tight text-white">GET</span>
-                <svg viewBox="0 0 72 32" className="relative z-[1] w-[68px] h-[30px]">
+                <svg viewBox="0 0 60 28" className="relative z-[1] w-[56px] h-[26px]">
                   <defs>
                     <linearGradient id="gold-gradient-toner" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#FFD700" />
@@ -38,16 +38,16 @@ export default function HeroSection() {
                     </linearGradient>
                   </defs>
                   <text
-                    x="36"
-                    y="27"
+                    x="30"
+                    y="24"
                     textAnchor="middle"
                     fill="url(#gold-gradient-toner)"
                     fontWeight="800"
-                    fontSize="30"
+                    fontSize="28"
                     fontFamily="'Poppins', sans-serif"
                     fontStyle="italic"
                   >
-                    44%
+                    20%
                   </text>
                 </svg>
                 <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">OFF</span>
@@ -55,9 +55,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="absolute left-1/2 top-[98px] z-10 translate-x-[78px] md:translate-x-[96px]">
-            <div className="w-[88px] h-[88px] rounded-full bg-[#3257FE] flex items-center justify-center shadow-lg">
-              <div className="relative w-[80px] h-[80px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
+          <div className="absolute left-1/2 top-[88px] z-10 translate-x-[78px] md:translate-x-[96px]">
+            <div className="w-[78px] h-[78px] rounded-full bg-[#3257FE] flex items-center justify-center shadow-lg">
+              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
                   <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
                   <div className="bg-white/8 w-[200%] h-[4px] rounded-full" />
@@ -82,11 +82,10 @@ export default function HeroSection() {
         </div>
 
         <p className="text-center text-[#111827] text-base md:text-lg font-semibold leading-snug">
-          Get your Exclusive Discount
+          Get your Exclusive{" "}
+          <span className="text-[#436adf] font-bold">20%</span> OFF
           <br />
-          Amazon Prime Day Deal{" "}
-          <span className="text-[#436adf] font-bold">41%</span> + Extra{" "}
-          <span className="text-[#436adf] font-bold">6%</span> OFF
+          (20% coupon + This Ad Only extra OFF)
         </p>
       </div>
     </section>
