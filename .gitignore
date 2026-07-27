@@ -12,6 +12,7 @@ dist
 dist-ssr
 build
 .react-router
+.worktrees
 *.local
 
 # Editor directories and files
