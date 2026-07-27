@@ -43,7 +43,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-dvh items-center justify-center bg-[#d4e4f4]">
+    <main className="flex min-h-dvh items-center justify-center bg-gradient-to-b from-white to-[#cce6f5]">
       <div className="relative">
         <img
           src={rootArtwork}
