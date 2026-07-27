@@ -1,8 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Route } from "./+types/home";
-import logoImage from "../assets/brand/logo.png";
-import productImage from "../assets/toner/product.webp";
-import CtaButton from "../components/cta-button";
+import rootArtwork from "../assets/root/image.png";
+import { resolveAmazonLink } from "../lib/amazon-link";
 
 const DEFAULT_AMAZON_LINK =
   "https://www.amazon.com/Moisturizer-Combination-Astringent-Certified-Zero-Irritation/dp/B06ZZK3YJY";
@@ -36,163 +35,32 @@ export const meta: Route.MetaFunction = () => [
   { name: "twitter:image", content: OG_IMAGE },
 ];
 
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect;
-
 export default function Home() {
-  const [amazonLink, setAmazonLink] = useState<string>(DEFAULT_AMAZON_LINK);
+  const [amazonLink, setAmazonLink] = useState(DEFAULT_AMAZON_LINK);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    for (const [, value] of params) {
-      if (/amazon\.com/i.test(value)) {
-        setAmazonLink(value);
-        return;
-      }
-    }
-  }, []);
-
-  const contentRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const [isFloating, setIsFloating] = useState<boolean | null>(null);
-
-  useIsomorphicLayoutEffect(() => {
-    const getDvh = () => {
-      // dvh를 정확히 구하기 위해 임시 요소로 측정
-      const el = document.createElement("div");
-      el.style.height = "100dvh";
-      el.style.position = "fixed";
-      el.style.visibility = "hidden";
-      document.body.appendChild(el);
-      const dvh = el.offsetHeight;
-      document.body.removeChild(el);
-      return dvh;
-    };
-
-    const check = () => {
-      const contentHeight = contentRef.current?.scrollHeight ?? 0;
-      const ctaHeight = ctaRef.current?.offsetHeight ?? 0;
-      const viewportHeight = getDvh();
-      setIsFloating(contentHeight + ctaHeight > viewportHeight);
-    };
-
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    setAmazonLink(resolveAmazonLink(window.location.search, DEFAULT_AMAZON_LINK));
   }, []);
 
   return (
-    <div
-      style={{ minHeight: "100dvh" }}
-      className={`bg-gradient-to-b from-white from-30% to-[#d4e4f4] flex justify-center px-4 pt-10 ${
-        isFloating ? "items-center pb-28" : "items-center"
-      } ${isFloating === null ? "invisible" : "visible"}`}
-    >
-      <div ref={contentRef} className="w-full max-w-[420px] flex flex-col items-center">
-        {/* Brand Logo */}
+    <main className="min-h-dvh bg-[#d4e4f4]">
+      <div className="relative mx-auto w-full max-w-[750px]">
         <img
-          src={logoImage}
-          alt="Pyunkang Yul"
-          className="h-5 mb-4"
+          src={rootArtwork}
+          alt="Pyunkang Yul Essence Toner promotion with an exclusive 20% off offer"
+          className="block h-auto w-full"
         />
-
-        {/* Title */}
-        <h2 className="text-[#111827] text-xl font-bold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
-          Barrier Strengthening
-        </h2>
-        <h1 className="text-[#436adf] text-4xl md:text-5xl font-bold tracking-tight mb-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
-          ESSENCE TONER
-        </h1>
-
-        {/* Product Image Area */}
-        <div className="relative w-full flex justify-center mb-8">
-          {/* GET 20% OFF Badge */}
-          <div className="absolute right-2 md:right-6 top-0 z-10">
-            <div className="w-[78px] h-[78px] rounded-full bg-[#FF2158] flex items-center justify-center shadow-lg">
-              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
-                {/* Diagonal lines */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
-                  <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
-                  <div className="bg-white/8 w-[200%] h-[4px] rounded-full" />
-                  <div className="bg-white/8 w-[200%] h-[8px] rounded-full" />
-                </div>
-                <span className="relative z-[1] text-[12px] font-bold leading-tight text-white">GET</span>
-                <svg viewBox="0 0 60 28" className="relative z-[1] w-[56px] h-[26px]">
-                  <defs>
-                    <linearGradient id="gold-gradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#FFD700" />
-                      <stop offset="100%" stopColor="#FFFFFF" />
-                    </linearGradient>
-                  </defs>
-                  <text
-                    x="30"
-                    y="24"
-                    textAnchor="middle"
-                    fill="url(#gold-gradient)"
-                    fontWeight="800"
-                    fontSize="28"
-                    fontFamily="'Poppins', sans-serif"
-                    fontStyle="italic"
-                  >
-                    20%
-                  </text>
-                </svg>
-                <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">OFF</span>
-              </div>
-            </div>
-          </div>
-
-          {/* 3M SOLD Badge */}
-          <div className="absolute right-2 md:right-6 top-[88px] z-10">
-            <div className="w-[78px] h-[78px] rounded-full bg-[#3257FE] flex items-center justify-center shadow-lg">
-              <div className="relative w-[70px] h-[70px] rounded-full border-[1px] border-white/80 flex flex-col items-center justify-center overflow-hidden">
-                {/* Diagonal lines */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-[8px] rotate-[-45deg] pointer-events-none">
-                  <div className="bg-white/8 w-[200%] h-[18px] rounded-full" />
-                  <div className="bg-white/8 w-[200%] h-[4px] rounded-full" />
-                  <div className="bg-white/8 w-[200%] h-[8px] rounded-full" />
-                </div>
-                <span className="relative z-[1] text-[26px] font-extrabold leading-tight text-white italic" style={{ fontFamily: "'Poppins', sans-serif" }}>3M</span>
-                <span className="relative z-[1] text-[12px] font-bold leading-tight text-white -mt-0.5">SOLD</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Product Image */}
-          <img
-            src={productImage}
-            alt="Pyunkang Yul Essence Toner"
-            className="w-[240px] md:w-[280px] drop-shadow-2xl"
-          />
-        </div>
-
-        {/* Discount Text */}
-        <p className="text-center text-[#111827] text-base md:text-lg font-semibold leading-snug mb-6">
-          Get your Exclusive{" "}
-          <span className="text-[#436adf] font-bold">20%</span> OFF
-          <br />
-          (20% coupon + This Ad Only extra OFF)
-        </p>
-
-        {/* 인라인 CTA (화면에 다 들어갈 때) */}
-        {!isFloating && (
-          <div className="flex flex-col items-center w-full pt-2">
-            <CtaButton amazonLink={amazonLink} />
-          </div>
-        )}
+        <a
+          href={amazonLink}
+          aria-label="Shop Pyunkang Yul Essence Toner on Amazon"
+          className="absolute left-[14.7%] top-[78.3%] h-[6.1%] w-[70.8%] rounded-full focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+          onClick={() => {
+            if (typeof window.fbq === "function") {
+              window.fbq("track", "Purchase");
+            }
+          }}
+        />
       </div>
-
-      {/* CTA 높이 측정용 (숨김) */}
-      <div ref={ctaRef} className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center pb-6 pt-8 px-4 pointer-events-none invisible">
-        <CtaButton amazonLink={amazonLink} />
-      </div>
-
-      {/* 플로팅 CTA (스크롤 필요할 때) */}
-      {isFloating && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center pb-6 pt-8 px-4 bg-gradient-to-t from-[#d4e4f4] from-60% to-transparent">
-          <CtaButton amazonLink={amazonLink} />
-        </div>
-      )}
-    </div>
+    </main>
   );
 }
