@@ -43,12 +43,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-dvh bg-[#d4e4f4]">
-      <div className="relative mx-auto w-full max-w-[750px]">
+    <main className="flex min-h-dvh items-center justify-center bg-[#d4e4f4]">
+      <div className="relative">
         <img
           src={rootArtwork}
           alt="Pyunkang Yul Essence Toner promotion with an exclusive 20% off offer"
-          className="block h-auto w-full"
+          className="block h-auto w-auto max-h-dvh max-w-full md:w-full md:max-h-none md:max-w-[750px]"
         />
         <a
           href={amazonLink}
