@@ -27,20 +27,20 @@
 - Consumes: a 750 × 1400 PNG source image.
 - Produces: a 750 px-wide PNG ending before the orange Amazon button, suitable for `src="/toner/essence-toner-hero.png"`.
 
-- [ ] **Step 1: Confirm the crop boundary**
+- [x] **Step 1: Confirm the crop boundary**
 
 Use the first row of the orange button as the excluded boundary. The output retains the source from `y=0` through `y=1094`, ending after the offer-copy region and before the button.
 
-- [ ] **Step 2: Create the non-destructive crop**
+- [x] **Step 2: Create the non-destructive crop**
 
 Run:
 
 ```bash
 mkdir -p public/toner
-sips --cropToHeightWidth 1095 750 app/assets/root/image.png --out public/toner/essence-toner-hero.png
+magick app/assets/root/image.png -crop 750x1095+0+0 +repage public/toner/essence-toner-hero.png
 ```
 
-- [ ] **Step 3: Verify the derived image dimensions and lower edge**
+- [x] **Step 3: Verify the derived image dimensions and lower edge**
 
 Run:
 
@@ -66,7 +66,7 @@ export default function HeroSection() {
 }
 ```
 
-- [ ] **Step 1: Establish the expected markup before replacement**
+- [x] **Step 1: Establish the expected markup before replacement**
 
 The finished component must contain an image with these user-visible properties:
 
@@ -79,7 +79,7 @@ The finished component must contain an image with these user-visible properties:
 
 The component must not render a second Amazon button; `/toner` already renders its fixed `CtaButton`.
 
-- [ ] **Step 2: Replace the assembled hero markup**
+- [x] **Step 2: Replace the assembled hero markup**
 
 Implement a white wrapper and a full-width image constrained to 750 px, preserving the source artwork's ratio:
 
@@ -97,7 +97,7 @@ export default function HeroSection() {
 }
 ```
 
-- [ ] **Step 3: Verify compilation and visual behavior**
+- [x] **Step 3: Verify compilation and visual behavior**
 
 Run:
 
@@ -108,4 +108,3 @@ pnpm build
 ```
 
 Then inspect `/toner` at a mobile-width viewport and a desktop-width viewport. Confirm the image is centered with no horizontal overflow, retains the offer copy, excludes the embedded orange button, and has exactly one fixed Amazon CTA.
-
