@@ -1,0 +1,1 @@
+export const ESSENCE_TONER_PROMO_CODE = "HNRF8MQN";

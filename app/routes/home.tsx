@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import type { Route } from "./+types/home";
 import rootArtwork from "../assets/root/image.png";
+import PromoCodeCopyButton from "../components/promo-code-copy-button";
 import { resolveAmazonLink } from "../lib/amazon-link";
+import { ESSENCE_TONER_PROMO_CODE } from "../lib/promotion";
 
 const DEFAULT_AMAZON_LINK =
   "https://www.amazon.com/Moisturizer-Combination-Astringent-Certified-Zero-Irritation/dp/B06ZZK3YJY";
@@ -49,6 +51,10 @@ export default function Home() {
           src={rootArtwork}
           alt="Pyunkang Yul Essence Toner promotion with an exclusive 20% off offer"
           className="block h-auto w-auto max-h-dvh max-w-full md:w-full md:max-h-none md:max-w-[750px]"
+        />
+        <PromoCodeCopyButton
+          code={ESSENCE_TONER_PROMO_CODE}
+          className="left-1/2 top-[26.21%]"
         />
         <a
           href={amazonLink}
