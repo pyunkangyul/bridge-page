@@ -1,4 +1,6 @@
-import designImage from "../../assets/barrier-shield-gel-mask/barrier-shield-gel-mask.jpg";
+import designImage from "../../assets/barrier-shield-gel-mask/barrier-shield-gel-mask-prom.gif";
+import { BARRIER_SHIELD_GEL_MASK_PROMO_CODE } from "../../lib/promotion";
+import PromoCodeCopyButton from "../promo-code-copy-button";
 
 const PAGE_BACKGROUND =
   "linear-gradient(180deg, #ffffff 0%, #f7fbff 52%, #d7eefb 100%)";
@@ -27,15 +29,21 @@ export default function HeroSection({
       >
         <img
           src={designImage}
-          alt="Pyunkang Yul Barrier Shield Gel Mask adhesive moisture barrier care."
+          alt="Pyunkang Yul Barrier Shield Gel Mask promotion with 20% off using promo code II4YMJJ4."
           className="block w-full select-none"
+        />
+
+        <PromoCodeCopyButton
+          code={BARRIER_SHIELD_GEL_MASK_PROMO_CODE}
+          variant="overlay"
+          className="left-[19.73%] top-[77.69%] h-[4.15%] w-[60.4%]"
         />
 
         <a
           href={amazonLink}
           aria-label="Shop Pyunkang Yul Barrier Shield Gel Mask on Amazon"
           onClick={() => trackPurchase(pixelId)}
-          className="absolute left-[14.67%] top-[80.62%] h-[6.92%] w-[70.67%] rounded-full"
+          className="absolute left-[14.53%] top-[83.77%] h-[6.77%] w-[71.07%] rounded-full focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
         />
       </div>
     </section>
