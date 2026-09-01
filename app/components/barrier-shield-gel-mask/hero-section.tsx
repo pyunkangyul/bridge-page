@@ -1,4 +1,4 @@
-import designImage from "../../assets/barrier-shield-gel-mask/barrier-shield-gel-mask-prom.gif";
+import designImage from "../../assets/barrier-shield-gel-mask/barrier-shield-gel-mask-prom.png";
 import { BARRIER_SHIELD_GEL_MASK_PROMO_CODE } from "../../lib/promotion";
 import PromoCodeCopyButton from "../promo-code-copy-button";
 
@@ -29,7 +29,7 @@ export default function HeroSection({
       >
         <img
           src={designImage}
-          alt="Pyunkang Yul Barrier Shield Gel Mask promotion with 20% off using promo code II4YMJJ4."
+          alt="Pyunkang Yul Barrier Shield Gel Mask promotion with 20% off using promo code WXLYETWZ."
           className="block w-full select-none"
         />
 
