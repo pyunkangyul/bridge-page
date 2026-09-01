@@ -1,5 +1,13 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLocation } from "react-router";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLocation,
+} from "react-router";
 import type { Route } from "./+types/root";
+import AppToaster from "./components/app-toaster";
 import "./app.css";
 
 const DEFAULT_FB_PIXEL_ID = "965145019301682";
@@ -69,6 +77,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           />
         </noscript>
         {children}
+        <AppToaster />
         <ScrollRestoration />
         <Scripts />
       </body>

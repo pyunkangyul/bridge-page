@@ -59,7 +59,9 @@ export default function CtaButton({
       </a>
       {showCaption && (
         <p className="w-full max-w-[340px] text-center text-xs leading-snug text-[#4d4d4d]">
-          <span className="block">⚠️ The extra OFF is automatically applied at FINAL checkout</span>
+          <span className="block">
+            ⚠️ Enter promo code at checkout to get the discount.
+          </span>
           <span className="block">⚠️ Offer valid while supplies last.</span>
         </p>
       )}

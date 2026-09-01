@@ -12,3 +12,186 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
 }
+
+[data-sonner-toaster].promo-toaster {
+  --width: min(390px, calc(100vw - 28px));
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.promo-toast[data-sonner-toast] {
+  position: absolute;
+  display: flex;
+  width: var(--width);
+  min-height: 68px;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  padding: 10px 18px 10px 10px;
+  color: #123b67;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(244, 251, 255, 0.92)),
+    rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  outline: 1px solid rgba(84, 158, 218, 0.16);
+  box-shadow:
+    0 20px 52px rgba(38, 83, 130, 0.16),
+    0 5px 16px rgba(56, 110, 162, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  transition:
+    transform 520ms cubic-bezier(0.32, 0.72, 0, 1),
+    opacity 360ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 360ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.promo-toast[data-sonner-toast] > * {
+  transition: opacity 320ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.promo-toast[data-sonner-toast]::after {
+  position: absolute;
+  inset: 4px;
+  pointer-events: none;
+  content: "";
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+}
+
+.promo-toast[data-sonner-toast][data-type="error"] {
+  color: #6f3542;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(255, 246, 247, 0.94)),
+    rgba(255, 255, 255, 0.92);
+  outline-color: rgba(176, 91, 108, 0.16);
+  box-shadow:
+    0 20px 52px rgba(107, 52, 65, 0.14),
+    0 5px 16px rgba(107, 52, 65, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.promo-toast__icon-slot {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  place-items: center;
+}
+
+.promo-toast__icon {
+  position: relative;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: white;
+  border-radius: 15px;
+  box-shadow:
+    0 8px 18px rgba(49, 103, 174, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.promo-toast__icon::after {
+  position: absolute;
+  inset: 3px;
+  content: "";
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.promo-toast__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.promo-toast__icon--success {
+  background: linear-gradient(145deg, #65b8fc 0%, #397ee8 56%, #315bd4 100%);
+}
+
+.promo-toast__icon--error {
+  background: linear-gradient(145deg, #d7808c 0%, #b65668 58%, #914254 100%);
+  box-shadow:
+    0 8px 18px rgba(130, 57, 72, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.36);
+}
+
+.promo-toast[data-mounted="true"] .promo-toast__icon {
+  animation: promo-toast-icon-pop 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.promo-toast__content {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.promo-toast__title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+}
+
+.promo-toast__description {
+  color: #54708b;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.006em;
+}
+
+.promo-toast[data-type="error"] .promo-toast__description {
+  color: #835c65;
+}
+
+@media (max-width: 600px) {
+  .promo-toast[data-sonner-toast] {
+    min-height: 64px;
+    gap: 10px;
+    padding: 9px 15px 9px 9px;
+    border-radius: 20px;
+  }
+
+  .promo-toast[data-sonner-toast]::after {
+    border-radius: 16px;
+  }
+
+  .promo-toast__icon-slot {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .promo-toast__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+  }
+
+  .promo-toast__icon::after {
+    border-radius: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-toast[data-sonner-toast],
+  .promo-toast[data-sonner-toast] > *,
+  .promo-toast[data-mounted="true"] .promo-toast__icon {
+    animation: none;
+    transition: none;
+  }
+}
+
+@keyframes promo-toast-icon-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.72) rotate(-6deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

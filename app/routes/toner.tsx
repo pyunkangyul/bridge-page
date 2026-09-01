@@ -18,7 +18,7 @@ const OG_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water. Deep hydration, barrier strengthening, only 7 essential ingredients.";
 const OG_IMAGE = "https://shop.pyunkangyul.com/og/toner.webp";
 const PAGE_URL = "https://shop.pyunkangyul.com/toner";
-const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 20% OFF";
+const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 25% OFF";
 
 export const meta: Route.MetaFunction = () => [
   { title: PAGE_TITLE },

@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import type { Route } from "./+types/home";
-import rootArtwork from "../assets/root/image.png";
+import rootArtwork from "../assets/root/new-image.png";
 import PromoCodeCopyButton from "../components/promo-code-copy-button";
 import { resolveAmazonLink } from "../lib/amazon-link";
 import { ESSENCE_TONER_PROMO_CODE } from "../lib/promotion";
 
 const DEFAULT_AMAZON_LINK =
   "https://www.amazon.com/Moisturizer-Combination-Astringent-Certified-Zero-Irritation/dp/B06ZZK3YJY";
+
+const PAGE_BACKGROUND =
+  "linear-gradient(180deg, #ffffff 0%, #ffffff 24%, #fdfefe 32%, #f8fcff 42%, #f3fbfe 50%, #eaf8fe 60%, #e1f5fd 70%, #d8f3fc 78%, #d2f0fc 85%, #c8eefb 100%)";
 
 const PAGE_TITLE = "ESSENCE TONER - Pyunkang Yul";
 const PAGE_DESCRIPTION =
@@ -15,7 +18,7 @@ const OG_DESCRIPTION =
   "Formulated with Astragalus Root Extract instead of purified water. Deep hydration, barrier strengthening, only 7 essential ingredients. Gentle yet effective for sensitive skin.";
 const OG_IMAGE = "https://shop.pyunkangyul.com/og/toner.webp";
 const PAGE_URL = "https://shop.pyunkangyul.com/";
-const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 20% OFF";
+const OG_TITLE = "ESSENCE TONER - Pyunkang Yul | 25% OFF";
 
 export const meta: Route.MetaFunction = () => [
   { title: PAGE_TITLE },
@@ -45,21 +48,25 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-dvh items-center justify-center bg-gradient-to-b from-white to-[#cce6f5]">
+    <main
+      className="flex min-h-dvh items-center justify-center"
+      style={{ background: PAGE_BACKGROUND }}
+    >
       <div className="relative">
         <img
           src={rootArtwork}
-          alt="Pyunkang Yul Essence Toner promotion with an exclusive 20% off offer"
+          alt="Pyunkang Yul Essence Toner promotion with an exclusive 25% off offer"
           className="block h-auto w-auto max-h-dvh max-w-full md:w-full md:max-h-none md:max-w-[750px]"
         />
         <PromoCodeCopyButton
           code={ESSENCE_TONER_PROMO_CODE}
-          className="left-1/2 top-[26.21%]"
+          variant="overlay"
+          className="left-[21.1%] top-[63.5%] h-[15.2%] w-[58%]"
         />
         <a
           href={amazonLink}
           aria-label="Shop Pyunkang Yul Essence Toner on Amazon"
-          className="absolute left-[14.7%] top-[78.3%] h-[6.1%] w-[70.8%] rounded-full focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+          className="absolute left-[14.5%] top-[82.2%] h-[5.8%] w-[71%] rounded-full focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
           onClick={() => {
             if (typeof window.fbq === "function") {
               window.fbq("track", "Purchase");
